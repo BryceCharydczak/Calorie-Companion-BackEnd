@@ -11,4 +11,4 @@ phases:
       - mvn package
 artifacts:
   files:
-    - target/CalorieCompanionBackend-0.0.1-SNAPSHOT.jar
+    - target/CComp-0.0.1-SNAPSHOT.jar
