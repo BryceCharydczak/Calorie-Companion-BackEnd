@@ -11,4 +11,4 @@ post_build:
 		- mvn package
 artifacts:
 files:
-- target/CComp-0.0.1-SNAPSHOT.jar
+	- target/CComp-0.0.1-SNAPSHOT.jar
