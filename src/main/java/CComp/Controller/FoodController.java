@@ -20,16 +20,26 @@ import CComp.Models.User;
 import CComp.Services.FoodService;
 
 
-
+/**
+ * The food controller is used to access the food database. The routing is mapped to
+ * /foods.
+ * @author Philip Escobedo
+ *
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/foods")
 public class FoodController {
-
+	
 	@Autowired
 	FoodService service;
 	
-	
+	/**
+	 * By POSTing an array of food to the /food endpoint, the array of food objects get added to the database.
+	 * If you are sending just one item, put it in an array;
+	 * @param newFoods 
+	 * @return List of added foods
+	 */
 	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public List<Food> addFoods(@Valid @RequestBody List<Food> newFoods) {
 		
@@ -44,11 +54,24 @@ public class FoodController {
 		return foods;
 	}
 	
+	/**
+	 * By going to the /foods route this function will be called which will display the entire
+	 * list of foods.
+	 * @return List of all foods
+	 */
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Food> findAllFoods() {
 		return service.findAllFoods();
 	}
 	
+	
+	
+	/**
+	 * By using the endpoint /user/id spring will return every food item added by a certain user
+	 * 
+	 * @param id
+	 * @return users by id
+	 */
 	@GetMapping(value="/user/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Food> findUserById(@PathVariable("id") Long id) {
 		return service.findFoodsByUserid(id);
